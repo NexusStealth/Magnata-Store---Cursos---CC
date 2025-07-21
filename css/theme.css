@@ -1,0 +1,145 @@
+/* Variáveis para Tema Claro */
+:root {
+    --bg-color: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+    --text-color: #1e293b;
+    --text-secondary: #475569;
+    --heading-color: #0f172a;
+    --accent-color: #3b82f6;
+    --border-color: rgba(59, 130, 246, 0.1);
+    
+    /* Header */
+    --header-bg: rgba(248, 250, 252, 0.95);
+    
+    /* Gradientes */
+    --gradient-primary: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 50%, #06b6d4 100%);
+    --gradient-text: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 50%, #06b6d4 100%);
+    --gradient-button: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+    --gradient-overlay: linear-gradient(135deg, rgba(59, 130, 246, 0.05) 0%, rgba(139, 92, 246, 0.05) 100%);
+    
+    /* Hero */
+    --hero-bg: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 50%, #cbd5e1 100%);
+    
+    /* Cards e componentes */
+    --card-bg: rgba(255, 255, 255, 0.8);
+    --button-bg: linear-gradient(135deg, #e2e8f0 0%, #cbd5e1 100%);
+    --button-text: #334155;
+    
+    /* Footer */
+    --footer-bg: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+    --footer-text: #f1f5f9;
+}
+
+/* Variáveis para Tema Escuro */
+[data-theme="dark"] {
+    --bg-color: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 100%);
+    --text-color: #f1f5f9;
+    --text-secondary: #cbd5e1;
+    --heading-color: #ffffff;
+    --accent-color: #60a5fa;
+    --border-color: rgba(96, 165, 250, 0.2);
+    
+    /* Header */
+    --header-bg: rgba(15, 15, 35, 0.95);
+    
+    /* Gradientes */
+    --gradient-primary: linear-gradient(135deg, #60a5fa 0%, #a78bfa 50%, #34d399 100%);
+    --gradient-text: linear-gradient(135deg, #60a5fa 0%, #a78bfa 50%, #34d399 100%);
+    --gradient-button: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+    --gradient-overlay: linear-gradient(135deg, rgba(96, 165, 250, 0.1) 0%, rgba(167, 139, 250, 0.1) 100%);
+    
+    /* Hero */
+    --hero-bg: linear-gradient(135deg, #0f0f23 0%, #1e1b4b 50%, #1f2937 100%);
+    
+    /* Cards e componentes */
+    --card-bg: rgba(30, 41, 59, 0.8);
+    --button-bg: linear-gradient(135deg, #374151 0%, #4b5563 100%);
+    --button-text: #f9fafb;
+    
+    /* Footer */
+    --footer-bg: linear-gradient(135deg, #111827 0%, #1f2937 100%);
+    --footer-text: #e5e7eb;
+}
+
+/* Efeitos especiais para tema escuro */
+[data-theme="dark"] .hero-section {
+    position: relative;
+}
+
+[data-theme="dark"] .hero-section::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+        radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.3) 0%, transparent 50%),
+        radial-gradient(circle at 40% 40%, rgba(120, 219, 255, 0.2) 0%, transparent 50%);
+    z-index: 1;
+    pointer-events: none;
+}
+
+[data-theme="dark"] .hero-content {
+    z-index: 2;
+}
+
+/* Animação de partículas para tema escuro */
+[data-theme="dark"] body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(2px 2px at 20px 30px, rgba(255, 255, 255, 0.1), transparent),
+        radial-gradient(2px 2px at 40px 70px, rgba(255, 255, 255, 0.1), transparent),
+        radial-gradient(1px 1px at 90px 40px, rgba(255, 255, 255, 0.1), transparent),
+        radial-gradient(1px 1px at 130px 80px, rgba(255, 255, 255, 0.1), transparent),
+        radial-gradient(2px 2px at 160px 30px, rgba(255, 255, 255, 0.1), transparent);
+    background-repeat: repeat;
+    background-size: 200px 100px;
+    z-index: -1;
+    opacity: 0.3;
+    animation: sparkle 20s linear infinite;
+}
+
+@keyframes sparkle {
+    0% { transform: translateY(0px); }
+    100% { transform: translateY(-100px); }
+}
+
+/* Transições suaves para mudança de tema */
+* {
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Efeitos hover aprimorados para tema escuro */
+[data-theme="dark"] .course-section li:hover {
+    background: #2a2a4a;
+    box-shadow: 0 5px 20px rgba(96, 165, 250, 0.2);
+}
+
+[data-theme="dark"] .btn-enroll:hover {
+    box-shadow: 0 15px 40px rgba(59, 130, 246, 0.4);
+}
+
+/* Scrollbar personalizada */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-color);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--accent-color);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--gradient-primary);
+}
+
