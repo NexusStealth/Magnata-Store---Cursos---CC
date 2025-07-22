@@ -3,6 +3,9 @@ document.addEventListener('DOMContentLoaded', function() {
     const themeToggle = document.getElementById('theme-toggle');
     const body = document.body;
     
+    // Atualizar ano atual no footer
+    document.getElementById('current-year').textContent = new Date().getFullYear();
+    
     // Menu hambúrguer
     const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
     const navLinks = document.getElementById('nav-links');
@@ -101,22 +104,24 @@ document.addEventListener('DOMContentLoaded', function() {
         observer.observe(el);
     });
     
-    // Efeito de digitação no título principal
-    const heroTitle = document.querySelector('.hero-content h2');
+    // Efeito de digitação no título principal - CORRIGIDO
+    const heroTitle = document.getElementById('hero-title');
     if (heroTitle) {
-        const originalText = heroTitle.textContent;
+        // Obtém texto do data-atributo
+        const fullText = heroTitle.getAttribute('data-text'); 
         heroTitle.textContent = '';
         
-        let i = 0;
-        const typeWriter = () => {
-            if (i < originalText.length) {
-                heroTitle.textContent += originalText.charAt(i);
-                i++;
-                setTimeout(typeWriter, 100);
-            }
-        };
+        let charIndex = 0;
         
-        setTimeout(typeWriter, 500);
+        function type() {
+            if (charIndex < fullText.length) {
+                heroTitle.textContent += fullText.charAt(charIndex);
+                charIndex++;
+                setTimeout(type, 100);
+            }
+        }
+        
+        setTimeout(type, 500);
     }
     
     // Efeito parallax otimizado
@@ -138,35 +143,8 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
     
-    // Contador animado (se houver números)
-    function animateCounter(element, target, duration = 2000) {
-        let start = 0;
-        const increment = target / (duration / 16);
-        
-        const timer = setInterval(() => {
-            start += increment;
-            element.textContent = Math.floor(start);
-            
-            if (start >= target) {
-                element.textContent = target;
-                clearInterval(timer);
-            }
-        }, 16);
-    }
-    
-    // Adicionar efeito de hover nos cards do curso
-    document.querySelectorAll('.course-section li').forEach(item => {
-        item.addEventListener('mouseenter', function() {
-            this.style.transform = 'translateX(10px) scale(1.02)';
-        });
-        
-        item.addEventListener('mouseleave', function() {
-            this.style.transform = 'translateX(10px) scale(1)';
-        });
-    });
-    
-    // Efeito de loading no botão de inscrição
-    const enrollBtn = document.querySelector('.btn-enroll');
+    // Efeito de loading no botão de inscrição - CORRIGIDO
+    const enrollBtn = document.getElementById('enroll-btn');
     if (enrollBtn) {
         enrollBtn.addEventListener('click', function(e) {
             e.preventDefault();
@@ -176,10 +154,9 @@ document.addEventListener('DOMContentLoaded', function() {
             this.style.pointerEvents = 'none';
             
             setTimeout(() => {
-                this.textContent = originalText;
-                this.style.pointerEvents = 'auto';
-                alert('Redirecionando para a página de inscrição...');
-            }, 2000);
+                // Aqui você colocaria o redirecionamento real
+                window.location.href = 'https://sua-pagina-de-pagamento.com';
+            }, 1000);
         });
     }
     
@@ -250,4 +227,3 @@ document.addEventListener('DOMContentLoaded', function() {
         setTimeout(toggleParticles, 100);
     });
 });
-
