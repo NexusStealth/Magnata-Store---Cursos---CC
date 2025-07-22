@@ -152,11 +152,11 @@ document.addEventListener('DOMContentLoaded', function() {
             const originalText = this.textContent;
             this.textContent = 'Carregando...';
             this.style.pointerEvents = 'none';
-            
+
             setTimeout(() => {
-                // Aqui você colocaria o redirecionamento real
-                window.location.href = 'https://sua-pagina-de-pagamento.com';
-            }, 1000);
+    // Redireciona para o link original do botão
+    window.location.href = this.getAttribute('href');
+}, 1000);
         });
     }
     
